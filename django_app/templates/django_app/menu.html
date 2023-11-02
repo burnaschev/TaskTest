@@ -1,0 +1,14 @@
+<ul class="list-unstyled">
+    {% for item in items %}
+        <li class="mb-1">
+            <a href="?{{ other_querystring }}&{{ menu }}={{ item.id }}" class="text-decoration-none {% if item.child_items %}fw-bold{% endif %}">{{ item.title }}</a>
+            {% with item.child_items as children %}
+                {% if children %}
+                    <ul class="list-unstyled ms-3">
+                        {% include 'tree_menu/tree_menu.html' with items=children menu=menu other_querystring=other_querystring %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </li>
+    {% endfor %}
+</ul>

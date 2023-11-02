@@ -1,0 +1,13 @@
+{% extends 'django_app/base.html' %}
+
+{% block title %} Index Page {% endblock %}
+{% load draw_menu %}
+{% block content %}
+<h2> Welcome to the Tree Page </h2>
+{% if menu %}
+{% draw_menu 'main_menu' %}
+{% else %}
+<p>Меню не найдено.</p>
+{% endif %}
+
+{% endblock %}
